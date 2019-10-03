@@ -1,0 +1,16 @@
+{% extends 'books/layout.html' %}
+
+{% load static %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+    <div style="margin:20px; background-color:white;" >
+        <img src="/media/{{product_details.image}}" width="300" height="300"><br>
+        <h2>{{product_details.name}}</h2><br>
+        <h2>Description : {{product_details.des}}</h2><br>
+        <h3>Price : {{product_details.price}}</h3><br>
+        <h3>Contact : {{product_details.contact_no}}</h3><br>
+        <h3>Address : {{product_details.address}}</h3><br>
+    </div>
+{% endblock %}
