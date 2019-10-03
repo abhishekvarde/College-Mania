@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books',
+    'books.apps.BooksConfig',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +67,11 @@ TEMPLATES = [
         },
     },
 ]
+
+#added media here
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 WSGI_APPLICATION = 'SellMyBook.wsgi.application'
 

@@ -20,5 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('product_page', views.product_page, name="product_page"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
