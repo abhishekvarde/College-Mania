@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>Add ad | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
+
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+    
+
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
+
+
+<body class=" app-books model-ad change-form"
+  data-admin-utc-offset="0">
+
+<!-- Container -->
+<!--<div id="container">-->
+
+<!--    -->
+<!--    &lt;!&ndash; Header &ndash;&gt;-->
+<!--    <div id="header">-->
+<!--        <div id="branding">-->
+<!--        -->
+<!--<h1 id="site-name"><a href="/admin/">Django administration</a></h1>-->
+
+<!--        </div>-->
+<!--        -->
+<!--        -->
+<!--        <div id="user-tools">-->
+<!--            -->
+<!--                Welcome,-->
+<!--                <strong>abhishekvarde</strong>.-->
+<!--            -->
+<!--            -->
+<!--                -->
+<!--                    <a href="/">View site</a> /-->
+<!--                -->
+<!--                -->
+<!--                    -->
+<!--                    -->
+<!--                -->
+<!--                -->
+<!--                <a href="/admin/password_change/">Change password</a> /-->
+<!--                -->
+<!--                <a href="/admin/logout/">Log out</a>-->
+<!--            -->
+<!--        </div>-->
+<!--        -->
+<!--        -->
+<!--        -->
+<!--    </div>-->
+<!--    &lt;!&ndash; END Header &ndash;&gt;-->
+    
+<div class="breadcrumbs">
+<a href="/admin/">Home</a>
+&rsaquo; <a href="/admin/books/">Books</a>
+&rsaquo; <a href="/admin/books/ad/">Ads</a>
+&rsaquo; Add ad
+</div>
+
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h1>Add adssssssssss</h1>
+        <div id="content-main">
+
+
+
+<form enctype="multipart/form-data" action="" method="post" id="ad_form" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="xWXesnCvJlhdya1psM7exGOiJMTDB8xrmGLDvgn4AigQuT7ggyfDc3p90s716cD1">
+<div>
+
+
+
+
+
+
+
+  <fieldset class="module aligned ">
+    
+    
+    
+        <div class="form-row field-name">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_name">Name:</label>
+                        
+                            <input type="text" name="name" class="vTextField" maxlength="30" required id="id_name">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-des">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_des">Des:</label>
+                        
+                            <input type="text" name="des" class="vTextField" maxlength="200" required id="id_des">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-price">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_price">Price:</label>
+                        
+                            <input type="number" name="price" class="vIntegerField" required id="id_price">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-image">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_image">Image:</label>
+                        
+                            <input type="file" name="image" accept="image/*" required id="id_image">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-contact_no">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_contact_no">Contact no:</label>
+                        
+                            <input type="text" name="contact_no" class="vTextField" maxlength="14" required id="id_contact_no">
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-address">
+            
+            
+                <div>
+                    
+                    
+                        <label class="required" for="id_address">Address:</label>
+                        
+                            <textarea name="address" cols="40" rows="10" class="vLargeTextField" maxlength="200" required id="id_address">
+</textarea>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+</fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="submit-row">
+
+<input type="submit" value="Save" class="default" name="_save">
+
+
+<input type="submit" value="Save and add another" name="_addanother">
+<input type="submit" value="Save and continue editing" name="_continue">
+
+
+</div>
+
+
+
+    <script type="text/javascript"
+            id="django-admin-form-add-constants"
+            src="/static/admin/js/change_form.js"
+            
+                data-model-name="ad"
+            >
+    </script>
+
+
+
+
+<script type="text/javascript"
+        id="django-admin-prepopulated-fields-constants"
+        src="/static/admin/js/prepopulate_init.js"
+        data-prepopulated-fields="[]">
+</script>
+
+
+</div>
+</form></div>
+
+        
+        <br class="clear">
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% extends 'books/layout.html' %}
+
+{% load static %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+    <div class="site-section bg-light" id="features-section">
+      <div class="container">
+
+        <div class="row mb-5">
+          <div class="col-md-7">
+              <form action="add" style="padding-bottom:50px">
+                  <input type="submit" class="btn btn-white px-4" style="border: 2px solid black; background-color:#1C63FB;" value="Add ads here.">
+              </form>
+              <h2 class="heading">Books Ads Posted by <strong>{{ request.user.username }}</strong></h2>
+          </div>
+        </div>
+
+        <div class="row">
+
+        {% for pros in products %}
+          <div  class="col-md-6 col-lg-4 mb-4" >
+            <a href="#"><!--product_page?id={{pros.id}}">-->
+                <div class="service h-100">
+                    {% if pros.image %}
+                        <img src='{{pros.image}}' width="200" height="200px">
+                    {% else %}
+                        <img src='{{pros.image}}' width="200" height="200px">
+                    {%endif %}
+                  <h3>{{ pros.name }}</h3>
+                  <p>{{ pros.des }}</p>
+                  <p style="margin-bottom: 5px;"><h3>Price : <bold>{{ pros.price }}</bold></h3></p>
+                    <p>posted by : {{pros.owner}}</p>
+                    {% if pros.active %}
+                    <form action="remove" style="padding-bottom:50px">
+                        <input type="submit" class="btn btn-white px-4" style="border: 2px solid black; background-color:red;" value="Delete">
+                        <p hidden><input type="text" name="id" value="{{pros.id}}"></p>
+                    </form>
+                    {% else %}
+                    <strong>No Longer Active.</strong>
+                    {% endif %}
+                </div>
+            </a>
+          </div>
+        {% endfor %}
+        </div>
+
+      <center>
+        <div class="pagination">
+            <span class="step-links">
+                {% if products.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ products.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ products.number }} of {{ products.paginator.num_pages }}.
+                </span>
+
+                {% if products.has_next %}
+                    <a href="?page={{ products.next_page_number }}">next</a>
+                    <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+      </center>
+
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'books/layout.html' %}
+
+{% load static %}
+
+{% block title %}Product{% endblock %}
+
+{% block head %}
+
+    <link rel="stylesheet" href='{% static "books/css/loginStyle.css" %}'>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="container login-container">
+        <div class="col-md-6 login-form-1">
+            <h3>Student SignUp</h3>
+            <form id="form1" action="/create_user/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter first name *" value="" name="first_name"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter last name *" value="" name="last_name"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter username *" value="" name="username"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your email *" value="" name="email"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your phone no *" value="" name="phone_no"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter your password *" value="" name="password"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Re-Enter your password *" value="" name="re_password"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Sign Up" />
+                </div>
+                <div class="form-group">
+                    <a href="/login" class="ForgetPwd">Log In Here.</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
