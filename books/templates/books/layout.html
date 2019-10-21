@@ -24,6 +24,8 @@
 
     <link rel="stylesheet" href="{% static 'books/css/style.css' %}">
 
+    {% block head %}{% endblock %}
+
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -39,7 +41,7 @@
     </div> <!-- .site-mobile-menu -->
 
 
-    <div class="site-navbar-wrap">
+    <div style="background-color:#1E70E6;" class="site-navbar-wrap">
 
       <div class="site-navbar site-navbar-target js-sticky-header">
         <div class="container">
@@ -57,11 +59,17 @@
 
                   <ul class="site-menu main-menu js-clone-nav d-none d-lg-block">
                     <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="" class="nav-link">Books</a></li>
+                    <li><a href="/books/" class="nav-link">Books</a></li>
                     <li><a href="#about-section" class="nav-link">Practical Assignment</a></li>
-                    <li><a href="#about-section" class="nav-link">Exam Paper</a></li>
-                    <li><a href="#testimonial-section" class="nav-link">About</a></li>
-                    <li><a href="#contact-section" class="nav-link">Profile</a></li>
+                    <li><a href="https://drive.google.com/drive/mobile/folders/1I89XNsuP2BPMWr3JHMbNXIO0o_pW-1su/0Bz9C0ysJZ7PnMGZKeWcybUpXWGM/1tiLJwBoXFB3JNs7lxx9c3tCidRQFi1l_/1zPSCIb69lEB1S4DtqZoEc2oZWdKdXiKW/1oO1cHXUY2BvD7ysmdY0AD5paG2nLIPt2?usp=sharing&sort=13&direction=a" class="nav-link">Exam Paper</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/books/profile" class="nav-link">{{ request.user.first_name }}'s Profile</a></li>
+                    <li><a href="/logout" class="nav-link">Logout</a></li>
+                    {% else %}
+                    <li><a href="/login" class="nav-link">Login</a></li>
+                    {% endif %}
+                    <!--                    <li><a href="#testimonial-section" class="nav-link">About</a></li>-->
+                    <!--                    <li><a href="#contact-section" class="nav-link">Profile</a></li>-->
                   </ul>
                 </div>
               </nav>
@@ -108,7 +116,7 @@
                   <li><a href="#">Home</a></li>
                   <li><a href="#">Books</a></li>
                   <li><a href="#">Practical Assignment</a></li>
-                  <li><a href="#">Exam Papers</a></li>
+                  <li><a href="https://drive.google.com/drive/mobile/folders/1I89XNsuP2BPMWr3JHMbNXIO0o_pW-1su/0Bz9C0ysJZ7PnMGZKeWcybUpXWGM/1tiLJwBoXFB3JNs7lxx9c3tCidRQFi1l_/1zPSCIb69lEB1S4DtqZoEc2oZWdKdXiKW/1oO1cHXUY2BvD7ysmdY0AD5paG2nLIPt2?usp=sharing&sort=13&direction=a">Exam Papers</a></li>
                   <li><a href="#">About</a></li>
                   <li><a href="#">Team</a></li>
                 </ul>
@@ -123,15 +131,16 @@
 
             <div class="mb-5">
               <h3 class="footer-heading mb-4">Quick Contact</h3>
-              <form method="post" class="form-subscribe">
+              <form method="post" acton="emailentry" class="form-subscribe">
+              {% csrf_token %}
                 <div class="form-group mb-3">
-                  <input type="text" class="form-control border-white text-white bg-transparent" placeholder="Name" aria-label="Enter Email" aria-describedby="button-addon2">
+                  <input type="text" class="form-control border-white text-white bg-transparent" name="name" placeholder="Name" aria-label="Enter Email" aria-describedby="button-addon2">
                 </div>
                 <div class="form-group mb-3">
-                  <input type="text" class="form-control border-white text-white bg-transparent" placeholder="Enter email" aria-label="Enter Email" aria-describedby="button-addon2">
+                  <input type="text" class="form-control border-white text-white bg-transparent" name="email" placeholder="Enter email" aria-label="Enter Email" aria-describedby="button-addon2">
                 </div>
                 <div class="form-group mb-3">
-                  <textarea name="" class="form-control" id="" cols="30" rows="4" placeholder="Your message"></textarea>
+                  <textarea name="" class="form-control" id="" cols="30" rows="4" name="message" placeholder="Your message"></textarea>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary px-5" type="submit">Send Message</button>
@@ -141,22 +150,22 @@
           </div>
 
         </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="mb-4">
-                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-                </div>
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
+<!--        <div class="row pt-5 mt-5 text-center">-->
+<!--          <div class="col-md-12">-->
+<!--            <div class="mb-4">-->
+<!--                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>-->
+<!--                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>-->
+<!--                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>-->
+<!--                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>-->
+<!--            </div>-->
+<!--            <p>-->
+<!--            &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+<!--            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>-->
+<!--            &lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+<!--            </p>-->
+<!--          </div>-->
 
-        </div>
+<!--        </div>-->
       </div>
     </footer>
   </div>

@@ -10,7 +10,19 @@
 
         <div class="row mb-5">
           <div class="col-md-7">
+              <form action="add" style="padding-bottom:50px">
+                  <input type="submit" class="btn btn-white px-4" style="border: 2px solid black; background-color:#1C63FB;" value="Add ads here.">
+              </form>
             <h2 class="heading">Books Available Here...</h2>
+              <form action="/books" method="get">
+
+              {% if search %}
+              <input type="text" name="search" value="{{ search }}" placeholder="Search here">
+              {% else %}
+              <input type="text" name="search" value="" placeholder="Search here">
+              {% endif %}
+                  <button type="submit"class="btn btn-white px-4" style="border: 2px solid black; background-color:#1C63FB;">search</button>
+              </form>
           </div>
         </div>
 
@@ -20,16 +32,22 @@
           <div  class="col-md-6 col-lg-4 mb-4" >
             <a href="product_page?id={{pros.id}}">
                 <div class="service h-100">
-                  <img src='/media/{{pros.image}}' width="200" height="200px">
+                    {% if pros.image %}
+                        <img src='{{pros.image}}' width="200" height="200px">
+                    {% else %}
+                        <img src='{{pros.image}}' width="200" height="200px">
+                    {%endif %}
                   <h3>{{ pros.name }}</h3>
                   <p>{{ pros.des }}</p>
                   <p style="margin-bottom: 5px;"><h3>Price : <bold>{{ pros.price }}</bold></h3></p>
+                    <p>posted by : {{pros.owner}}</p>
                 </div>
             </a>
           </div>
         {% endfor %}
         </div>
 
+      <center>
         <div class="pagination">
             <span class="step-links">
                 {% if products.has_previous %}
@@ -47,6 +65,7 @@
                 {% endif %}
             </span>
         </div>
+      </center>
 
       </div>
     </div>

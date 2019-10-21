@@ -20,7 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('add', views.add, name='add'),
+    path('remove', views.remove, name='remove'),
+    path('dataentry', views.dataentry, name='dataentry'),
+    path('emailentry', views.emailentry, name='emailentry'),
     path('product_page', views.product_page, name="product_page"),
+    path('profile', views.myads, name="my ads"),
+#    path('myads', views.myads, name="my ads"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
