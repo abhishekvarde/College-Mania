@@ -35,7 +35,7 @@
 
   <div id="content" class="colM">
 
-        <h1>Add Ad</h1>
+        <h1>Post Ad</h1>
         <div id="content-main">
 
 
@@ -43,6 +43,11 @@
 <form enctype="multipart/form-data" action="dataentry" method="post" id="ad_form" novalidate>
     {% csrf_token %}
     {{ csrf_input }}
+
+
+                <div style="background-color:red;" class="form-group">
+                    <center><h2>{{ message }}</h2></center>
+                </div>
 
 <!--    <input type="hidden" name="csrfmiddlewaretoken" value="xWXesnCvJlhdya1psM7exGOiJMTDB8xrmGLDvgn4AigQuT7ggyfDc3p90s716cD1" >-->
 <div>
@@ -181,8 +186,8 @@
 <input type="submit" value="Save" class="default" name="_save">
 
 
-<input type="submit" value="Save and add another" name="_addanother">
-<input type="submit" value="Save and continue editing" name="_continue">
+<!--<input type="submit" value="Save and add another" name="_addanother">-->
+<!--<input type="submit" value="Save and continue editing" name="_continue">-->
 
 
 </div>

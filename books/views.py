@@ -4,6 +4,8 @@ from django.db.models import Q
 from .models import Ad, Email
 from django.core.files.storage import FileSystemStorage
 from django.contrib import messages
+from django.core.mail import send_mail
+from SellMyBook import view
 from django.contrib.auth import authenticate
 # from django.http import HttpResponse
 
@@ -57,6 +59,9 @@ def dataentry(request):
         owner = request.user
         contact_no = request.POST.get("contact_no")
         address = request.POST.get("address")
+        if name == "" or des == "" or price == "" or owner == "" or contact_no == "" or address == "":
+            message = "fill all the parameters."
+            return render(request, 'books/add1.html', {'message': message})
         obj = Ad(name=name, des=des, price=price, image=uploaded_file_url, owner=owner, contact_no=contact_no, address=address)
         obj.save()
     return home(request)
@@ -75,9 +80,20 @@ def emailentry(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         message = request.POST.get('message')
+
+        print(name+"-----"+email+"-------"+message)
+        print("------------------\n---------------\n-------------------------------------")
+
+        send_mail(
+            'Quick contact registered.',
+            "We will contact you soon. \nYou message is : " + message,
+            'miniprojectsdl@gmail.com',
+            [email],
+            fail_silently=False,
+        )
         obj = Email(name=name, email=email, message=message)
         obj.save()
-    return home(request)
+    return view.home(request)
 
 
 def myads(request):

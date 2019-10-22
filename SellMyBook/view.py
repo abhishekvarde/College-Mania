@@ -54,7 +54,22 @@ def create_user(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         re_password = request.POST.get('re_password')
-        print(first_name+"---"+last_name+"---"+username+"---"+email+"---"+password+"---"+re_password)
+        message = ""
+        message_flag = False
+        if (first_name == "" or last_name == "" or username == "" or email == "" or password == "" or re_password == "") and not message_flag:
+            message = "fill all the parameters"
+            message_flag = True
+        if User.objects.filter(username=username).exists() and not message_flag:
+            message = "Username already taken."
+            message_flag = True
+        if User.objects.filter(email=email).exists() and not message_flag:
+            message = "Email already exists."
+            message_flag = True
+        if password != re_password:
+            message = "Password doesn't match."
+            message_flag = True
+        if message_flag:
+            return render(request, 'signup_page.html', {"message": message})
         if password == re_password:
             print("new user added in the field of user table in database.")
             user = User.objects.create_user(username, email, password)

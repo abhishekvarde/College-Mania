@@ -25,7 +25,6 @@ urlpatterns = [
     path('login/', view.login_page, name='login'),
     path('logout/', view.logout_page, name="logout person"),
     path('signup/', view.signup_page, name='signup'),
-    # path('verify_user/', view.verify_user, name='login user'),
     path('create_user/', view.create_user, name='create user'),
     path('profile/', view.profile, name='my profile'),
     path('books/', include('books.urls'))
