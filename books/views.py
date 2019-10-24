@@ -81,12 +81,9 @@ def emailentry(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-        print(name+"-----"+email+"-------"+message)
-        print("------------------\n---------------\n-------------------------------------")
-
         send_mail(
             'Quick contact registered.',
-            "We will contact you soon. \nYou message is : " + message,
+            "We will contact you soon. \nYou message is below : \n" + message,
             'miniprojectsdl@gmail.com',
             [email],
             fail_silently=False,
